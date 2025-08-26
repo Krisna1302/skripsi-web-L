@@ -1,0 +1,7 @@
+Judul Skripsi: Analisis Pengaruh Waktu Belajar Terhadap Prestasi Mahasiswa
+Penulis: Peris Trisna Wati Nazara
+Program Studi: Teknik Informatika
+
+Abstrak:
+Penelitian ini bertujuan untuk menganalisis hubungan antara durasi belajar dengan prestasi akademik mahasiswa. Data dikumpulkan dari 50 mahasiswa selama satu semester.
+Hasil menunjukkan bahwa terdapat korelasi positif antara jumlah jam belajar dengan nilai rata-rata mahasiswa.
