@@ -1,6 +1,3 @@
-Oke, ini versi **satu bubble markdown utuh** yang tinggal kamu copy-paste ke file README.md tanpa perlu dipisah-pisah:
-
-````markdown
 # skripsi-web
 
 Sistem Pengajuan Judul Skripsi berbasis Web menggunakan PHP dan Bootstrap.
