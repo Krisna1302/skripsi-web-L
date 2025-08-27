@@ -40,9 +40,7 @@ Proyek ini **masih dalam proses pengembangan** dan akan terus diperbarui untuk m
 | VS Code | Code editor untuk menulis kode, debugging, dan install ekstensi Laravel |
 | Browser | Menampilkan hasil aplikasi web di localhost |
 | Composer | Dependency manager PHP, install Laravel & package tambahan |
-| InfinityFree | Hosting gratis untuk aplikasi web |
 | StarUML | Membuat diagram use case, ERD, dan site map |
-| FileZilla | Upload file via FTP ke hosting |
 
 ---
 
