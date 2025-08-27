@@ -26,15 +26,14 @@ Proyek ini **masih dalam proses pengembangan** dan akan terus diperbarui untuk m
 - Bootstrap 5 (CDN)
 - AOS (Animate On Scroll)
 - HTML & CSS
-- Vite.js (untuk asset bundling)
 
 ---
 
 ## 👥 Anggota Kelompok / Kontributor
 
-- Krisna Wibowo (krisna.wibowo@student.tau.ac.id) – Admin & Developer  
-- Peris Trisna Wati Nazara – Dosen  
-- Putri Wandayani – Mahasiswa  
+- Krisna Wibowo – Teknik Informatika
+- Peris Trisna Wati Nazara – Teknik Informatika 
+- Putri Wandayani – Teknik Informatika
 
 ---
 
