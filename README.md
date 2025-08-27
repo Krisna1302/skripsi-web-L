@@ -43,38 +43,42 @@ Proyek ini **masih dalam proses pengembangan** dan akan terus diperbarui untuk m
 Proyek ini masih dalam tahap pengembangan aktif. Fitur tambahan, validasi data, dan optimasi keamanan akan terus diperbarui secara bertahap.
 
 ---
-````
+
 ## 📂 Cara Menjalankan
 
 1. Clone repository:
-   
-   ```bash
-   git clone https://github.com/Krisna1302/skripsi-web-L.git
-   cd skripsi-web-L
-```
+
+```bash
+git clone https://github.com/Krisna1302/skripsi-web-L.git
+cd skripsi-web-L
+````
+
 2. Install dependencies:
 
-   ```bash
-   composer install
-   npm install
-   npm run dev
-   ```
+```bash
+composer install
+npm install
+npm run dev
+```
+
 3. Copy file `.env` dan generate key:
 
-   ```bash
-   cp .env.example .env
-   php artisan key:generate
-   ```
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
 4. Jalankan migrate dan seed:
 
-   ```bash
-   php artisan migrate --seed
-   ```
+```bash
+php artisan migrate --seed
+```
+
 5. Jalankan server lokal:
 
-   ```bash
-   php artisan serve
-   ```
+```bash
+php artisan serve
+```
 
 ---
 
