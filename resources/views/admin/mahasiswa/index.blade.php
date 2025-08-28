@@ -147,12 +147,12 @@ h2 {
 <h2 data-aos="fade-down">Daftar Mahasiswa</h2>
 
 <!-- Tombol Tambah -->
-<div data-aos="zoom-in" data-aos-delay="100" class="mb-3">
+<div data-aos="fade-down" data-aos-delay="100" class="mb-3">
     <a href="{{ route('mahasiswa.create') }}" class="btn btn-glassy">Tambah Mahasiswa</a>
 </div>
 
 <!-- Filter Form -->
-<div class="filter-card" data-aos="fade-down" data-aos-delay="50">
+<div class="filter-card" data-aos="fade-up" data-aos-delay="50">
     <form method="GET" action="{{ route('mahasiswa.index') }}">
         <div class="row g-2">
             <div class="col-md-4">

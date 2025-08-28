@@ -141,6 +141,11 @@ h2 {
 @section('content')
 <h2 data-aos="fade-down">Daftar Dosen</h2>
 
+<!-- Tombol Tambah -->
+<div data-aos="fade-down" data-aos-delay="100" class="mb-3">
+    <a href="{{ route('dosen.create') }}" class="btn btn-glassy">Tambah Dosen</a>
+</div>
+
 <!-- Filter Form -->
 <div class="filter-card" data-aos="fade-up" data-aos-delay="50">
     <form method="GET" action="{{ route('dosen.index') }}">
@@ -171,17 +176,12 @@ h2 {
     </form>
 </div>
 
-<!-- Tombol Tambah -->
-<div data-aos="fade-down" data-aos-delay="100" class="mb-3">
-    <a href="{{ route('dosen.create') }}" class="btn btn-glassy">Tambah Dosen</a>
-</div>
-
 @if(session('success'))
     <div class="alert alert-success text-center">{{ session('success') }}</div>
 @endif
 
 @if($dosen->count() > 0)
-<div class="table-responsive" data-aos="fade-down" data-aos-delay="150">
+<div class="table-responsive" data-aos="fade-up" data-aos-delay="150">
     <table class="table">
         <thead>
             <tr>
