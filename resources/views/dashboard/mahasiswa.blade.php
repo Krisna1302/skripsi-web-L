@@ -181,6 +181,49 @@
         border-radius: 6px;
         margin-bottom: 6px;
     }
+
+    /* ==============================
+       Mobile Friendly Media Query
+       ============================== */
+    @media (max-width: 480px) {
+        .profile-card {
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .profile-card img {
+            width: 90px;
+            height: 90px;
+        }
+
+        .profile-info h3 {
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .profile-info p, .profile-quote {
+            font-size: 0.85rem;
+            text-align: center;
+        }
+
+        .history-card {
+            padding: 15px;
+            gap: 15px;
+        }
+
+        .history-box {
+            padding: 15px 10px;
+        }
+
+        .history-box strong {
+            font-size: 1rem;
+        }
+
+        .history-box .timestamp {
+            font-size: 11px;
+        }
+    }
 </style>
 @endpush
 

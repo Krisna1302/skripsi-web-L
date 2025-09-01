@@ -180,11 +180,16 @@
                 width: 100%;
                 height: auto;
                 box-shadow: none;
+                border-right: none;
             }
 
-            .main {
-                margin-left: 0;
-                padding: 20px;
+            .main-wrapper {
+                margin-left: 0 !important;
+                padding: 0 10px;
+            }
+
+            .main-content {
+                padding: 20px 10px !important;
             }
 
             footer {

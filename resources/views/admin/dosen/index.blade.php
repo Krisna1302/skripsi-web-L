@@ -42,7 +42,7 @@ h2 {
 /* ==============================
    Table Glassy Style
    ============================== */
-.table-responsive { overflow-x: auto; }
+.table-responsive { overflow-x: visible; }
 .table {
     width: 100%;
     border-collapse: separate;
@@ -73,7 +73,9 @@ h2 {
     text-align: center;
 }
 
-/* Buttons */
+/* ==============================
+   Buttons
+   ============================== */
 .btn-glassy {
     background: rgba(0,123,255,0.8); 
     backdrop-filter: blur(8px);
@@ -88,7 +90,9 @@ h2 {
     color: #fff;
 }
 
-/* Empty State */
+/* ==============================
+   Empty State
+   ============================== */
 .empty-message { 
     text-align: center; 
     padding: 40px; 
@@ -117,7 +121,9 @@ h2 {
 .password-medium { background: rgba(255,193,7,0.85); box-shadow: 0 0 8px rgba(255,193,7,0.6);}
 .password-strong { background: rgba(40,167,69,0.85); box-shadow: 0 0 8px rgba(40,167,69,0.6);}
 
-/* Foto */
+/* ==============================
+   Foto
+   ============================== */
 .foto-wrapper {
     width: 50px;
     height: 50px;
@@ -134,6 +140,50 @@ h2 {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/* ==============================
+   Responsive / Mobile Friendly
+   ============================== */
+@media (max-width: 767px) {
+    .table thead {
+        display: none;
+    }
+    .table tbody, .table tr, .table td {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    .table tr {
+        margin-bottom: 15px;
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(42,43,61,0.6);
+        border: 1px solid #3e3e50;
+        padding: 8px 10px;
+    }
+    .table tbody td {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 10px 5px;
+        gap: 12px;
+    }
+    .table td::before {
+        content: attr(data-label);
+        flex: 0 0 110px;
+        font-weight: 600;
+        color: #00bcd4;
+        text-align: left;
+    }
+    .table td {
+        text-align: left !important;
+        white-space: normal;
+        word-wrap: break-word;
+    }
+    .foto-wrapper {
+        margin: 0;
+    }
 }
 </style>
 @endpush
@@ -198,18 +248,18 @@ h2 {
         </thead>
         <tbody>
             @foreach($dosen as $d)
-            <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>
+            <tr data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 50 }}">
+                <td data-label="#">{{ $loop->iteration }}</td>
+                <td data-label="Foto">
                     <div class="foto-wrapper">
                         <img src="{{ $d->getFotoUrlAttribute() }}" alt="Foto">
                     </div>
                 </td>
-                <td>{{ $d->nama }}</td>
-                <td>{{ $d->nidn }}</td>
-                <td>{{ $d->kaprodi }}</td>
-                <td>{{ $d->user->username }}</td>
-                <td>
+                <td data-label="Nama">{{ $d->nama }}</td>
+                <td data-label="NIDN">{{ $d->nidn }}</td>
+                <td data-label="Prodi">{{ $d->kaprodi }}</td>
+                <td data-label="Username">{{ $d->user->username }}</td>
+                <td data-label="Password">
                     @php
                         $plain = $d->user->password_plain ?? '123';
                         $length = strlen($plain);
@@ -217,8 +267,8 @@ h2 {
                     @endphp
                     <span class="password-badge password-{{ $strength }}" onclick="togglePassword(this, '{{ $plain }}')">******</span>
                 </td>
-                <td>{{ $d->created_at ? $d->created_at->format('d-m-Y H:i') : '-' }}</td>
-                <td>
+                <td data-label="Dibuat">{{ $d->created_at ? $d->created_at->format('d-m-Y H:i') : '-' }}</td>
+                <td data-label="Aksi">
                     <a href="{{ route('dosen.edit', $d->id) }}" class="btn btn-warning btn-sm mb-1">Edit</a>
                     <form action="{{ route('dosen.destroy', $d->id) }}" method="POST" style="display:inline-block;">
                         @csrf

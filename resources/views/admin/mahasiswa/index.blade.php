@@ -140,6 +140,46 @@ h2 {
 .filter-card .btn-primary { background: #4e9af1; border: none; }
 .filter-card .btn-primary:hover { background: #6aa8f9; }
 .filter-card .btn-secondary { background: #6c757d; border: none; }
+
+/* ==============================
+   Responsive / Mobile Friendly
+   ============================== */
+@media (max-width: 767px) {
+    .table thead {
+        display: none;
+    }
+    .table tbody, .table tr, .table td {
+        display: block;
+        width: 100%;
+        text-align: left;
+    }
+    .table tr {
+        margin-bottom: 15px;
+        border-radius: 12px;
+        overflow: hidden;
+        background: rgba(42,43,61,0.6);
+        border: 1px solid #3e3e50;
+    }
+    .table tbody td {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px;
+        gap: 12px;
+    }
+    .table td::before {
+        content: attr(data-label);
+        flex: 0 0 110px;
+        font-weight: 600;
+        color: #00bcd4;
+        text-align: left;
+    }
+    .table td {
+        text-align: left !important;
+    }
+    .foto-wrapper {
+        margin: 0;
+    }
+}
 </style>
 @endpush
 
@@ -208,17 +248,17 @@ h2 {
         <tbody>
             @foreach($mahasiswa as $m)
             <tr data-aos="fade-up" data-aos-delay="{{ $loop->iteration * 50 }}" data-aos-duration="800">
-                <td>{{ $loop->iteration }}</td>
-                <td>
+                <td data-label="#"> {{ $loop->iteration }}</td>
+                <td data-label="Foto">
                     <div class="foto-wrapper">
                         <img src="{{ $m->getFotoUrlAttribute() }}" alt="Foto">
                     </div>
                 </td>
-                <td>{{ $m->nama }}</td>
-                <td>{{ $m->nim }}</td>
-                <td>{{ $m->prodi }}</td>
-                <td>{{ $m->user->username }}</td>
-                <td>
+                <td data-label="Nama">{{ $m->nama }}</td>
+                <td data-label="NIM">{{ $m->nim }}</td>
+                <td data-label="Prodi">{{ $m->prodi }}</td>
+                <td data-label="Username">{{ $m->user->username }}</td>
+                <td data-label="Password">
                     @php
                         $plain = $m->user->password_plain ?? '123';
                         $length = strlen($plain);
@@ -226,8 +266,8 @@ h2 {
                     @endphp
                     <span class="password-badge password-{{ $strength }}" onclick="togglePassword(this, '{{ $plain }}')">******</span>
                 </td>
-                <td>{{ $m->created_at ? $m->created_at->format('d-m-Y H:i') : '-' }}</td>
-                <td>
+                <td data-label="Dibuat">{{ $m->created_at ? $m->created_at->format('d-m-Y H:i') : '-' }}</td>
+                <td data-label="Aksi">
                     <a href="{{ route('mahasiswa.edit', $m->id) }}" class="btn btn-warning btn-sm mb-1">Edit</a>
                     <form action="{{ route('mahasiswa.destroy', $m->id) }}" method="POST" style="display:inline-block;">
                         @csrf
@@ -252,7 +292,6 @@ h2 {
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // Inisialisasi AOS
     AOS.init({ 
         duration: 900,
         once: true,
@@ -260,8 +299,6 @@ document.addEventListener('DOMContentLoaded', function () {
         anchorPlacement: 'top-bottom'
     });
 });
-
-// Toggle password visibility
 function togglePassword(el, pwd){
     if(el.innerText === '******'){
         el.innerText = pwd;

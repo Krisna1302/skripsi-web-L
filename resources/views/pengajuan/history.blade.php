@@ -55,7 +55,6 @@
     object-fit: cover;
     margin-right: 10px;
 }
-
 .card-header .meta-left { display: flex; align-items: center; gap: 12px; }
 
 /* Deskripsi preview satu baris di header */
@@ -85,8 +84,9 @@
 /* Badge */
 .badge-status {
     font-weight: 600;
-    padding: 0.45em 0.75em;
-    font-size: 0.85rem;
+    padding: 0.35em 0.65em;
+    font-size: 0.8rem;
+    margin-left: 8px;
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .badge-status:hover {
@@ -115,6 +115,40 @@
 /* Toggle Icon */
 .toggle-icon { transition: transform 0.3s ease; }
 .toggle-open { transform: rotate(180deg); }
+
+/* ============================
+   Mobile Responsive
+   ============================ */
+@media (max-width: 576px) {
+    /* Filter form */
+    .filter-card .row.g-2 > .col,
+    .filter-card .row.g-2 > .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* Card header layout */
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .card-header .meta-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        width: 100%;
+    }
+    .card-header img {
+        margin: 0 0 8px 0;
+    }
+    .card-header .d-flex.align-items-center.flex-wrap {
+        flex-wrap: wrap;
+    }
+    .card-header .preview {
+        max-width: 100%;
+        white-space: normal;
+    }
+}
 </style>
 @endpush
 
@@ -181,11 +215,18 @@
         @php $status = strtolower($p->status); @endphp
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header d-flex align-items-center justify-content-between" onclick="toggleCardBody(this)">
+                <div class="card-header" onclick="toggleCardBody(this)">
                     <div class="meta-left">
                         <img src="{{ $p->mahasiswa->getFotoUrlAttribute() }}" alt="Foto">
                         <div>
-                            <strong>{{ $p->mahasiswa->nama }}</strong> | {{ $p->mahasiswa->nim }}<br>
+                            <div class="d-flex align-items-center flex-wrap">
+                                <strong>{{ $p->mahasiswa->nama }}</strong> | {{ $p->mahasiswa->nim }}
+                                <span class="badge
+                                    @if($status == 'menunggu') bg-warning text-dark
+                                    @elseif($status == 'diterima') bg-success
+                                    @else bg-danger @endif
+                                    badge-status">{{ ucfirst($status) }}</span>
+                            </div>
                             <small>{{ $p->mahasiswa->prodi }}</small><br>
                             <small class="fst-italic">Judul: {{ $p->judul }}</small>
                             <small class="preview" title="{{ strip_tags($p->deskripsi ?? '-') }}">
@@ -194,11 +235,6 @@
                         </div>
                     </div>
                     <div class="d-flex align-items-center">
-                        <span class="badge
-                            @if($status == 'menunggu') bg-warning text-dark
-                            @elseif($status == 'diterima') bg-success
-                            @else bg-danger @endif
-                            badge-status me-2">{{ ucfirst($status) }}</span>
                         <i class="bi bi-chevron-down toggle-icon"></i>
                     </div>
                 </div>

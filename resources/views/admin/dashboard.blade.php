@@ -95,33 +95,69 @@ h2 {
         max-width: 100%;
         margin-bottom: 15px;
     }
-    .table-responsive {
-        overflow-x: visible;
-    }
+
+    /* Table jadi list style */
     .table thead {
         display: none;
     }
-    .table tbody tr {
+    .table tbody,
+    .table tr,
+    .table td {
         display: block;
+        width: 100%;
+        text-align: left; /* pastikan isi rata kiri */
+    }
+    .table tr {
         margin-bottom: 15px;
         border-radius: 12px;
+        overflow: hidden;
     }
+
     .table tbody td {
         display: flex;
-        justify-content: space-between;
+        align-items: flex-start;
         padding: 10px;
-        text-align: left;
+        gap: 12px; /* tambah jarak label ↔ isi */
     }
-    .table tbody td::before {
+
+    .table td::before {
         content: attr(data-label);
+        flex: 0 0 100px; /* lebar tetap label */
         font-weight: 600;
-        color: #cfcfcf;
+        color: #00bcd4;
+        text-align: left; /* label tetap rata kiri */
     }
+
+    .table td[data-label="Judul"] {
+        max-width: 100%;
+        white-space: normal;    /* biar bisa turun ke bawah */
+        word-wrap: break-word;
+        overflow: hidden;
+        text-align: left;       /* isi rata kiri */
+    }
+
+    .table td:last-child {
+        border-bottom: none;
+    }
+
     .chart-container {
         width: 100% !important;
         height: auto !important;
     }
+
+    .table tbody tr {
+        background-color: #242437;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 12px; /* jarak antar row */
+        border: 1px solid #3e3e50; /* garis pemisah full */
+    }
+
+    .table tbody tr td {
+        border: none !important; /* hapus border default */
+    }
 }
+
 
 /* ==============================
    Status Badge Pop-in

@@ -116,15 +116,32 @@
 .toggle-icon { transition: transform 0.3s ease; }
 .toggle-open { transform: rotate(180deg); }
 
-/* Optional: batasi deskripsi di card body jadi maksimal 2 baris (aktifkan kalau mau)
-.card-body .deskripsi {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+/* Responsive: card header flex wrap on small screens */
+@media (max-width: 576px) {
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .card-header .meta-left {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .card-header img {
+        margin-bottom: 10px;
+    }
+    .card-header .preview {
+        max-width: 100%;
+        white-space: normal;
+    }
 }
-*/
+
+/* Responsive form filter */
+@media (max-width: 768px) {
+    .filter-card .row > [class*="col-"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
 </style>
 @endpush
 
@@ -136,7 +153,7 @@
     <div class="filter-card" data-aos="fade-up" data-aos-delay="50">
         <form method="GET" action="{{ route('pengajuan.status') }}">
             <div class="row g-2">
-                <div class="col-md-3">
+                <div class="col-sm-6 col-md-3">
                     <label>Nama Mahasiswa</label>
                     <select name="nama" class="form-control">
                         <option value="">Semua</option>
@@ -145,11 +162,11 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-md">
                     <label>NIM</label>
                     <input type="text" name="nim" value="{{ request('nim') }}" class="form-control" placeholder="Ketik NIM">
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-md">
                     <label>Prodi</label>
                     <select name="prodi" class="form-control">
                         <option value="">Semua</option>
@@ -158,7 +175,7 @@
                         @endforeach
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-sm-6 col-md">
                     <label>Status</label>
                     <select name="status" class="form-control">
                         <option value="">Semua</option>
@@ -167,7 +184,7 @@
                         <option value="ditolak" {{ request('status') == 'ditolak' ? 'selected' : '' }}>Ditolak</option>
                     </select>
                 </div>
-                <div class="col">
+                <div class="col-sm-12 col-md">
                     <label>Urutkan Tanggal</label>
                     <select name="sort" class="form-control">
                         <option value="desc" {{ ($sort ?? 'desc') == 'desc' ? 'selected' : '' }}>Terbaru → Terlama</option>
@@ -192,26 +209,29 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header d-flex align-items-center justify-content-between" onclick="toggleCardBody(this)">
-                    <div class="meta-left">
-                        <img src="{{ $p->mahasiswa->getFotoUrlAttribute() }}" alt="Foto">
-                        <div>
-                            <strong>{{ $p->mahasiswa->nama }}</strong> | {{ $p->mahasiswa->nim }}<br>
-                            <small>{{ $p->mahasiswa->prodi }}</small><br>
-                            <small class="fst-italic">Judul: {{ $p->judul }}</small>
-                            <small class="preview" title="{{ strip_tags($p->deskripsi ?? '-') }}">
-                                {{ \Illuminate\Support\Str::limit(strip_tags($p->deskripsi ?? '-'), 100) }}
-                            </small>
-                        </div>
-                    </div>
-                    <div class="d-flex align-items-center">
-                        <span class="badge
-                            @if($status == 'menunggu') bg-warning text-dark
-                            @elseif($status == 'diterima') bg-success
-                            @else bg-danger @endif
-                            badge-status me-2">{{ ucfirst($status) }}</span>
-                        <i class="bi bi-chevron-down toggle-icon"></i>
-                    </div>
-                </div>
+    <div class="meta-left">
+        <img src="{{ $p->mahasiswa->getFotoUrlAttribute() }}" alt="Foto">
+        <div>
+            <div class="d-flex align-items-center gap-2">
+                <strong>{{ $p->mahasiswa->nama }}</strong> | {{ $p->mahasiswa->nim }}
+                <span class="badge
+                    @if($status == 'menunggu') bg-warning text-dark
+                    @elseif($status == 'diterima') bg-success
+                    @else bg-danger @endif
+                    badge-status">{{ ucfirst($status) }}</span>
+            </div>
+            <small>{{ $p->mahasiswa->prodi }}</small><br>
+            <small class="fst-italic">Judul: {{ $p->judul }}</small>
+            <small class="preview" title="{{ strip_tags($p->deskripsi ?? '-') }}">
+                {{ \Illuminate\Support\Str::limit(strip_tags($p->deskripsi ?? '-'), 100) }}
+            </small>
+        </div>
+    </div>
+    <div class="d-flex align-items-center">
+        <i class="bi bi-chevron-down toggle-icon"></i>
+    </div>
+</div>
+
 
                 <div class="card-body">
                     <p><strong>File:</strong>
