@@ -61,32 +61,70 @@ Proyek ini masih dalam tahap pengembangan aktif. Fitur tambahan, validasi data, 
 ## 🖥 Struktur Halaman / Skenario Login
 
 ### Mahasiswa
-
-- Halaman Login
-- Dashboard Mahasiswa
-- Halaman Pengajuan Skripsi
-- Halaman Status Pengajuan Skripsi
-- Halaman Pengaturan Profil
+- Halaman Login  
+- Dashboard Mahasiswa  
+- Halaman Pengajuan Skripsi  
+- Halaman Status Pengajuan Skripsi  
+- Halaman Pengaturan Profil  
 
 ### Dosen
-
-- Halaman Login
-- Dashboard Dosen
-- Halaman Data Pengajuan Skripsi
-- Halaman History Pengajuan Skripsi
-- Halaman Pengaturan Profil
+- Halaman Login  
+- Dashboard Dosen  
+- Halaman Data Pengajuan Skripsi  
+- Halaman History Pengajuan Skripsi  
+- Halaman Pengaturan Profil  
 
 ### Admin
+- Halaman Login  
+- Dashboard Admin  
+- Data Mahasiswa  
+- Data Dosen  
+- Data Pengajuan Skripsi  
 
-- Halaman Login
-- Dashboard Admin
-- Data Mahasiswa
-- Data Dosen
-- Data Pengajuan Skripsi
+---
+
+## 🖼️ Preview Tampilan
+
+### 🔑 Halaman Login
+![Login Page](https://raw.githubusercontent.com/Krisna1302/skripsi-web-L/dokumentasi/attachment/MenuLogin.png)
+
+### 📊 Dashboard Admin
+![Dashboard Admin](https://raw.githubusercontent.com/Krisna1302/skripsi-web-L/dokumentasi/attachment/UI_Admin/1.dashboard_admin.png)
+
+### 📝 Pengajuan Mahasiswa
+![Pengajuan Mahasiswa](https://raw.githubusercontent.com/Krisna1302/skripsi-web-L/dokumentasi/attachment/UI_Mahasiswa/2.AjukanMhs.png)
+
+---
+
+## 📝 Catatan
+
+- Database default yang digunakan: **`skripsi_db`**  
+- Seeder **`PengajuanSeeder`** harus dijalankan secara manual jika ingin menggunakan akun default.  
+
+### Akun Seeder (Manual)
+
+| ID | Role      | Username | Password (Plain) |
+| -- | --------- | -------- | ---------------- |
+| 1  | Admin     | admin    | 123              |
+| 2  | Mahasiswa | peris    | 123              |
+| 3  | Mahasiswa | krisnaw  | 123              |
+| 4  | Mahasiswa | ajma     | 123              |
+| 5  | Mahasiswa | putri    | 123              |
+| 6  | Mahasiswa | revli    | 123              |
+| 7  | Mahasiswa | daffa    | 123              |
+| 8  | Mahasiswa | handhy   | 123              |
+| 9  | Mahasiswa | krisnan  | 123              |
+| 10 | Mahasiswa | yasmin   | 123              |
+| 11 | Dosen     | yohanes  | 123              |
+| 12 | Dosen     | sri      | 123              |
+| 13 | Dosen     | johny    | 123              |
+
+> **Catatan:** Password disimpan terenkripsi di database, gunakan password plain di atas untuk login pertama kali.
 
 ---
 
 ## 📌 Repository & File Project
 
 - GitHub: [https://github.com/Krisna1302/skripsi-web](https://github.com/Krisna1302/skripsi-web)  
-- Google Drive: Tempat menyimpan berkas proyek lengkap (source code, database, dokumentasi)
+- Google Drive: Menyimpan berkas lengkap (source code, database, dokumentasi)  
+- Release: Untuk full package (termasuk `vendor/` dan file `.env`)
