@@ -1,6 +1,6 @@
-# skripsi-web
+# 📚 skripsi-web
 
-Sistem Pengajuan Judul Skripsi berbasis Web menggunakan PHP dan Bootstrap.
+Sistem Pengajuan Judul Skripsi berbasis Web menggunakan **Laravel** dan **Bootstrap**.
 
 Website ini dibuat sebagai bagian dari tugas akhir mahasiswa untuk memudahkan proses pengajuan dan validasi judul skripsi antara mahasiswa dan dosen.  
 Proyek ini **masih dalam proses pengembangan** dan akan terus diperbarui untuk memenuhi kebutuhan pengguna dan standar sistem informasi akademik.
@@ -9,12 +9,12 @@ Proyek ini **masih dalam proses pengembangan** dan akan terus diperbarui untuk m
 
 ## 🔧 Fitur Utama
 
-- 🔐 Sistem login terpisah untuk mahasiswa, dosen, dan admin
+- 🔐 Sistem login terpisah untuk **Mahasiswa**, **Dosen**, dan **Admin**
 - 📄 Mahasiswa dapat mengajukan judul skripsi, mengunggah file, dan memantau status pengajuan
 - ✅ Dosen dapat menyetujui atau menolak pengajuan dengan komentar
 - 🕓 Riwayat pengajuan tersimpan otomatis berdasarkan status
 - 📁 File proposal dapat dilihat langsung oleh dosen dan mahasiswa
-- 🎨 Tampilan dark mode yang konsisten dan responsif
+- 🎨 Tampilan **dark mode** yang konsisten dan responsif
 - 🛠 Admin dapat mengelola data dosen, mahasiswa, dan pengajuan
 
 ---
@@ -47,43 +47,65 @@ Proyek ini masih dalam tahap pengembangan aktif. Fitur tambahan, validasi data, 
 
 1. Clone repository:
 
-```bash
-git clone https://github.com/Krisna1302/skripsi-web-L.git
-cd skripsi-web-L
-````
+   ```bash
+   git clone https://github.com/Krisna1302/skripsi-web-L.git
+   cd skripsi-web-L
+   ```
 
 2. Install dependencies:
 
-```bash
-composer install
-npm install
-npm run dev
-```
+   ```bash
+   composer install
+   npm install
+   npm run dev
+   ```
 
 3. Copy file `.env` dan generate key:
 
-```bash
-cp .env.example .env
-php artisan key:generate
-```
+   ```bash
+   cp .env.example .env
+   php artisan key:generate
+   ```
 
-4. Jalankan migrate dan seed:
+4. Sesuaikan konfigurasi database di `.env`:
 
-```bash
-php artisan migrate --seed
-```
+   ```
+   DB_DATABASE=skripsi_db
+   DB_USERNAME=root
+   DB_PASSWORD=
+   ```
 
-5. Jalankan server lokal:
+5. Jalankan migrate dan seed default:
 
-```bash
-php artisan serve
-```
+   ```bash
+   php artisan migrate --seed
+   ```
+
+6. Jalankan server lokal:
+
+   ```bash
+   php artisan serve
+   ```
 
 ---
 
-## 📝 Catatan Akun Seeder
+## 🌱 Catatan Seeder
 
-Berikut username dan password default yang dibuat di `PengajuanSeeder`:
+* Jalankan seeder default dengan:
+
+  ```bash
+  php artisan db:seed
+  ```
+
+* Untuk `PengajuanSeeder`, **harus dijalankan manual**:
+
+  ```bash
+  php artisan db:seed --class=PengajuanSeeder
+  ```
+
+---
+
+## 👤 Akun Default
 
 | ID | Role      | Username | Password (Plain) |
 | -- | --------- | -------- | ---------------- |
@@ -101,4 +123,23 @@ Berikut username dan password default yang dibuat di `PengajuanSeeder`:
 | 12 | Dosen     | sri      | 123              |
 | 13 | Dosen     | johny    | 123              |
 
-> **Catatan:** Password disimpan terenkripsi di database, gunakan password plain di atas untuk login pertama kali.
+> ⚠️ Password disimpan terenkripsi di database, gunakan password plain di atas untuk login pertama kali.
+
+---
+
+## 📝 Note
+
+* Nama database default: **skripsi\_db**
+* Seeder `PengajuanSeeder` tidak otomatis, jalankan manual dengan command di atas
+* Untuk versi lengkap yang sudah berisi `vendor/` dan file `.env`, silakan download dari menu **Release** di repository ini
+
+## 🖼️ Preview Tampilan
+
+### 🔑 Halaman Login
+![Login Page](https://raw.githubusercontent.com/Krisna1302/skripsi-web-L/dokumentasi/attachment/MenuLogin.png)
+
+### 📊 Dashboard Admin
+![Dashboard Admin](https://raw.githubusercontent.com/Krisna1302/skripsi-web-L/dokumentasi/attachment/UI_Admin/1.dashboard_admin.png)
+
+### 📝 Pengajuan Mahasiswa
+![Pengajuan Mahasiswa](https://raw.githubusercontent.com/Krisna1302/skripsi-web-L/dokumentasi/attachment/UI_Mahasiswa/2.AjukanMhs.png)
